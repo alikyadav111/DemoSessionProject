@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Home Page</title>
-    <!-- Bootstrap CSS -->
+  
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -19,18 +19,18 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
+   
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        // Function to redirect to login page
+    
         function redirectToLogin() {
             window.location.replace('login.html');
         }
 
-        // Set a timeout for session expiration (e.g., 20 seconds) only for index.html
+       
         const sessionTimeout = 20000; // 20 seconds
         let timeoutId;
 
@@ -43,15 +43,15 @@
             startTimeout();
         }
 
-        // Start the timeout when the page loads
+       
         startTimeout();
 
-        // Reset the timeout whenever there's user activity (mousemove)
+       
         document.addEventListener('mousemove', resetTimeout);
         const user = JSON.parse(localStorage.getItem('user'));
 
         if (!user) {
-            // Redirect to login page if user is not logged in
+           
             window.location.replace('login.html');
         }
     </script>
