@@ -8,8 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<!-- Aliq Cganges -->
-<!-- Aliq Cganges Test main-->
+
 <body>
     <div class="container">
         <div class="row justify-content-center">
@@ -26,15 +25,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        // Function to clear user data from local storage and redirect to login page
-        function clearUserDataAndRedirect() {
-            localStorage.removeItem('user');
+        // Function to redirect to login page
+        function redirectToLogin() {
             window.location.replace('login.html');
         }
 
         // Set a timeout for session expiration (e.g., 20 seconds) only for index.html
         const sessionTimeout = 20000; // 20 seconds
-        setTimeout(clearUserDataAndRedirect, sessionTimeout);
+        let timeoutId;
+
+        function startTimeout() {
+            timeoutId = setTimeout(redirectToLogin, sessionTimeout);
+        }
+
+        function resetTimeout() {
+            clearTimeout(timeoutId);
+            startTimeout();
+        }
+
+        // Start the timeout when the page loads
+        startTimeout();
+
+        // Reset the timeout whenever there's user activity (mousemove)
+        document.addEventListener('mousemove', resetTimeout);
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (!user) {
+            // Redirect to login page if user is not logged in
+            window.location.replace('login.html');
+        }
     </script>
 </body>
 
